@@ -117,6 +117,6 @@ function integrateSubResult(subResults) {
 }
 
 // console.log(caculateSpeed(0.025, 0.8, 0.2, 0.34));
-console.log(caculateSteering(0.7));
+console.log(caculateSteering(0.8));
 
 module.exports = { caculateSteering, caculateSpeed };

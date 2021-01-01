@@ -24,7 +24,7 @@ const {
   SPEED_SLOW,
   SPEED_MEDIUM,
 } = require("./constance");
-const { makeLeftTrapezoid, makeTriangle, makeRightTrapezoid, makeTrapezoid } = require("./make-fuzzy-set-utils");
+const { makeLeftTrapezoid, makeTriangle, makeRightTrapezoid, makeTrapezoid } = require("./utils");
 
 const deviationFuzzySets = [
   { name: DEVIATION_FAR_LEFT, muy: makeLeftTrapezoid(0.25, 0.4) },

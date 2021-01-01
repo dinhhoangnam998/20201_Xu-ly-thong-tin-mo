@@ -39,7 +39,7 @@ function readSteeringRules() {
       });
       return newRule;
     });
-    console.log(steeringRules);
+    // console.log(steeringRules);
     return steeringRules;
   }
 }
