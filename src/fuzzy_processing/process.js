@@ -1,5 +1,31 @@
-const { deviationFuzzySets, distanceLightFuzzySets, distanceObstacleFuzzySets, lightStatusFuzzySets, speedFuzzySets } = require("./fuzzy-sets");
-const { readSpeedRules } = require("./rule-readers");
+const {
+  deviationFuzzySets,
+  distanceLightFuzzySets,
+  distanceObstacleFuzzySets,
+  lightStatusFuzzySets,
+  speedFuzzySets,
+  steeringFuzzySets,
+} = require("./fuzzy-sets");
+const { readSpeedRules, readSteeringRules } = require("./rule-readers");
+
+function caculateSteering(deviation) {
+  const firedFuzzySetsAndFiredValues = findFiredFuzzySetAndValue(deviationFuzzySets, deviation);
+  const firedFuzzySets = Object.keys(firedFuzzySetsAndFiredValues);
+  const steeringRules = readSteeringRules();
+  const subResults = [];
+  firedFuzzySets.forEach((firedFuzzySet) => {
+    const firedRule = steeringRules.find((rule) => rule.deviation === firedFuzzySet);
+    const concludeFuzzySet = steeringFuzzySets.find((fz) => fz.name === firedRule.steering);
+    const firedValue = firedFuzzySetsAndFiredValues[firedFuzzySet];
+
+    const subResultFuzzySetMuy = function (x) {
+      return Math.min(firedValue, concludeFuzzySet.muy(x));
+    };
+    const deFuzzyValue = deFuzzy(subResultFuzzySetMuy);
+    subResults.push({ weight: firedValue, deFuzzyValue });
+  });
+  return integrateSubResult(subResults);
+}
 
 function caculateSpeed(distanceObstacle, lightStatus, distanceLight, deviation) {
   const firedFuzzySetAndFiredValue = getAllFiredFuzzySetAndFiredValue(distanceObstacle, lightStatus, distanceLight, deviation); // {light_status_green: 0.667, distance_light_medium: 0.499}
@@ -16,21 +42,20 @@ function caculateSpeed(distanceObstacle, lightStatus, distanceLight, deviation) 
       subResults.push({ deFuzzyValue, weight });
     }
   });
-
   const output = integrateSubResult(subResults);
   return output;
 }
 
 function getAllFiredFuzzySetAndFiredValue(distanceObstacle, lightStatus, distanceLight, deviation) {
-  const firedDistanceObstacleFzs = findFiredFzs(distanceObstacleFuzzySets, distanceObstacle);
-  const firedLightStatusFzs = findFiredFzs(lightStatusFuzzySets, lightStatus);
-  const firedDistanceLightFzs = findFiredFzs(distanceLightFuzzySets, distanceLight);
-  const firedDeviationFzs = findFiredFzs(deviationFuzzySets, deviation);
+  const firedDistanceObstacleFzs = findFiredFuzzySetAndValue(distanceObstacleFuzzySets, distanceObstacle);
+  const firedLightStatusFzs = findFiredFuzzySetAndValue(lightStatusFuzzySets, lightStatus);
+  const firedDistanceLightFzs = findFiredFuzzySetAndValue(distanceLightFuzzySets, distanceLight);
+  const firedDeviationFzs = findFiredFuzzySetAndValue(deviationFuzzySets, deviation);
   const allFiredFzs = Object.assign({}, firedDistanceObstacleFzs, firedLightStatusFzs, firedDistanceLightFzs, firedDeviationFzs);
   return allFiredFzs;
 }
 
-function findFiredFzs(fuzzySets, x) {
+function findFiredFuzzySetAndValue(fuzzySets, x) {
   const result = {};
   fuzzySets.forEach((fz) => {
     const firedValue = fz.muy(x);
@@ -91,4 +116,5 @@ function integrateSubResult(subResults) {
   return ts / ms;
 }
 
-console.log(caculateSpeed(0.025, 0.8, 0.2, 0.34));
+// console.log(caculateSpeed(0.025, 0.8, 0.2, 0.34));
+console.log(caculateSteering(0.7));
