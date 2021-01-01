@@ -1,41 +1,41 @@
 // deviation
-DEVIATION_FAR_LEFT = "far_left";
-DEVIATION_LEFT = "left";
-DEVIATION_MIDDLE = "middle";
-DEVIATION_RIGHT = "right";
-DEVIATION_FAR_RIGHT = "far_right";
+DEVIATION_FAR_LEFT = "deviation_far_left";
+DEVIATION_LEFT = "deviation_left";
+DEVIATION_MIDDLE = "deviation_middle";
+DEVIATION_RIGHT = "deviation_right";
+DEVIATION_FAR_RIGHT = "deviation_far_right";
 
 // steering
-STEERING_HARD_LEFT = "hard_left";
-STEERING_LEFT = "left";
-STEERING_STRAIGHT = "straight";
-STEERING_RIGHT = "right";
-STEERING_HARD_RIGHT = "hard_right";
+STEERING_HARD_LEFT = "steering_hard_left";
+STEERING_LEFT = "steering_left";
+STEERING_STRAIGHT = "steering_straight";
+STEERING_RIGHT = "steering_right";
+STEERING_HARD_RIGHT = "steering_hard_right";
 
 // light status
-LIGHT_STATUS_GREEN = "green";
-LIGHT_STATUS_LESS_GREEN = "less_green";
-LIGHT_STATUS_YELLOW = "yellow";
-LIGHT_STATUS_LESS_RED = "less_red";
-LIGHT_STATUS_RED = "red";
+LIGHT_STATUS_GREEN = "light_status_green";
+LIGHT_STATUS_LESS_GREEN = "light_status_less_green";
+LIGHT_STATUS_YELLOW = "light_status_yellow";
+LIGHT_STATUS_LESS_RED = "light_status_less_red";
+LIGHT_STATUS_RED = "light_status_red";
 
 // light distance
-DISTANCE_LIGHT_NEAR = "near";
-DISTANCE_LIGHT_MEDIUM = "medium";
-DISTANCE_LIGHT_FAR = "far";
+DISTANCE_LIGHT_NEAR = "distance_light_near";
+DISTANCE_LIGHT_MEDIUM = "distance_light_medium";
+DISTANCE_LIGHT_FAR = "distance_light_far";
 
 // speed
-SPEED_STOP = "stop";
-SPEED_SLOWER = "slower";
-SPEED_SLOW = "slow";
-SPEED_MEDIUM = "medium";
+SPEED_STOP = "speed_stop";
+SPEED_SLOWER = "speed_slower";
+SPEED_SLOW = "speed_slow";
+SPEED_MEDIUM = "speed_medium";
 
 // obstacle distance
-DISTANCE_OBSTACLE_NEAR = "near";
-DISTANCE_OBSTACLE_MEDIUM = "medium";
-DISTANCE_OBSTACLE_FAR = "far";
+DISTANCE_OBSTACLE_NEAR = "distance_obstacle_near";
+DISTANCE_OBSTACLE_MEDIUM = "distance_obstacle_medium";
+DISTANCE_OBSTACLE_FAR = "distance_obstacle_far";
 
-export {
+module.exports = {
   DEVIATION_FAR_LEFT,
   DEVIATION_LEFT,
   DEVIATION_MIDDLE,
