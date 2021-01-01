@@ -51,9 +51,9 @@ const lightStatusFuzzySets = [
 ];
 
 const distanceLightFuzzySets = [
-  { name: DISTANCE_LIGHT_NEAR, muy: makeLeftTrapezoid(0.05, 0.2) },
-  { name: DISTANCE_LIGHT_MEDIUM, muy: makeTrapezoid(0.05, 0.1, 0.25, 0.35) },
-  { name: DISTANCE_LIGHT_FAR, muy: makeRightTrapezoid(0.2, 0.35) },
+  { name: DISTANCE_LIGHT_NEAR, muy: makeLeftTrapezoid(0.15, 0.2) },
+  { name: DISTANCE_LIGHT_MEDIUM, muy: makeTrapezoid(0.15, 0.25, 0.35, 0.45) },
+  { name: DISTANCE_LIGHT_FAR, muy: makeRightTrapezoid(0.3, 0.5) },
 ];
 
 const distanceObstacleFuzzySets = [
