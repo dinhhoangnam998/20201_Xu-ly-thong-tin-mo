@@ -1,4 +1,5 @@
 const XLSX = require("xlsx");
+const fs = require("fs");
 
 let steeringRules;
 let speedRules;
@@ -19,9 +20,12 @@ function readSpeedRules() {
       });
       return newRule;
     });
+    // console.log(speedRules);
+    fs.writeFileSync("speedRules.json", JSON.stringify(speedRules));
     return speedRules;
   }
 }
+// readSpeedRules();
 
 function readSteeringRules() {
   if (steeringRules) {
@@ -40,7 +44,10 @@ function readSteeringRules() {
       return newRule;
     });
     // console.log(steeringRules);
+    fs.writeFileSync("steeringRules.json", JSON.stringify(steeringRules));
     return steeringRules;
   }
 }
+
+// readSteeringRules();
 module.exports = { readSpeedRules, readSteeringRules };

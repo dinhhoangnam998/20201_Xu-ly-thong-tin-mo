@@ -6,7 +6,8 @@ const {
   speedFuzzySets,
   steeringFuzzySets,
 } = require("./fuzzy-sets");
-const { readSpeedRules, readSteeringRules } = require("./rule-readers");
+// const { readSpeedRules, readSteeringRules } = require("./rule-readers");
+const { readSpeedRules, readSteeringRules } = require("./simple-rule-reader");
 
 function caculateSteering(deviation) {
   const firedFuzzySetsAndFiredValues = findFiredFuzzySetAndValue(deviationFuzzySets, deviation);
@@ -116,7 +117,7 @@ function integrateSubResult(subResults) {
   return ts / ms;
 }
 
-// console.log(caculateSpeed(0.025, 0.8, 0.2, 0.34));
-console.log(caculateSteering(0.8));
+console.log(caculateSpeed(0.025, 0.8, 0.2, 0.34));
+// console.log(caculateSteering(0.8));
 
 module.exports = { caculateSteering, caculateSpeed };
